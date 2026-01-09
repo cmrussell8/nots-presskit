@@ -74,7 +74,7 @@ export async function GET(request: Request) {
       preferCSSPageSize: true,
     });
 
-    return new NextResponse(pdf, {
+    return new NextResponse(Buffer.from(pdf), {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
