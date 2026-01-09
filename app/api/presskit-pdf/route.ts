@@ -55,7 +55,6 @@ export async function GET(request: Request) {
     args: chromium.args,
     defaultViewport: { width: 1920, height: 1080 },
     executablePath,
-    headless: chromium.headless,
   });
 
   try {
