@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-page-bg: #252422;
+  --color-slide-bg: #252422;
+  --color-text-primary: #e8e6e1;
+  --color-text-body: #c5c0b8;
+  --color-text-body-secondary: #a09a92;
+  --color-text-body-tertiary: #8a857e;
+  --color-text-muted: #5a5650;
+  --color-accent-clay: #a08d7d;
+  --color-burgundy: #8b4a4a;
+  --color-burgundy-light: #a06565;
+  --color-divider: rgba(255, 255, 255, 0.08);
+  --color-corner-frame: rgba(160, 141, 125, 0.15);
+
+  /* Fonts */
+  --font-old-world: var(--font-old-world);
+  --font-modern: var(--font-modern);
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Reveal.js embedded overrides */
+.reveal,
+.reveal .slides,
+.reveal .backgrounds,
+.reveal .slide-background {
+  background-color: transparent !important;
+}
+
+/* Force slides to fill the container completely */
+.reveal .slides {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  transform: none;
+}
+
+.reveal .slides>section {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure no default background on the viewport if specific class exists */
+.reveal-viewport {
+  background-color: transparent !important;
+}
+
+/* Noise Filter SVG */
+/* We will implement the noise overlay in the component using a data URL or separate SVG,
+   but we can define the animation or base styles here if needed.
+   For now, we keep it simple. */
+
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-text-body);
+}
+
+@keyframes presskitFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auto-fade-up {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.reveal .slides section.present .auto-fade-up {
+  animation: presskitFadeUp 0.6s ease-out both;
+}
+
+@media print {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-page-bg) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .presskit-frame {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .presskit-frame .reveal {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .auto-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

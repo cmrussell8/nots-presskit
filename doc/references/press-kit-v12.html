@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night on the Sun - Press Kit</title>
+    
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts: Inter (Modern) & Cormorant Garamond (Old World) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Font Assignments */
+        .font-old-world { font-family: 'Cormorant Garamond', serif; }
+        .font-modern { font-family: 'Inter', sans-serif; }
+        
+        /* Gray background */
+        body { 
+            overflow: hidden; 
+            background-color: #252422;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 16:9 Slide Container - Single smooth shadow */
+        .slide-frame {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(92vw, 164vh);
+            height: min(51.75vw, 92vh);
+            background-color: #1a1918;
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.4);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        /* Very subtle grain texture overlay */
+        .slide-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.012;
+            pointer-events: none;
+            z-index: 100;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Corner frame elements - symmetric */
+        .corner-frame {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .corner-frame::before,
+        .corner-frame::after {
+            content: '';
+            position: absolute;
+            background: rgba(160, 141, 125, 0.15);
+        }
+        
+        /* All corners use same 20px size and 20px inset */
+        .corner-tl { top: 20px; left: 20px; }
+        .corner-tl::before { width: 1px; height: 20px; top: 0; left: 0; }
+        .corner-tl::after { width: 20px; height: 1px; top: 0; left: 0; }
+        
+        .corner-tr { top: 20px; right: 20px; }
+        .corner-tr::before { width: 1px; height: 20px; top: 0; right: 0; }
+        .corner-tr::after { width: 20px; height: 1px; top: 0; right: 0; }
+        
+        .corner-bl { bottom: 20px; left: 20px; }
+        .corner-bl::before { width: 1px; height: 20px; bottom: 0; left: 0; }
+        .corner-bl::after { width: 20px; height: 1px; bottom: 0; left: 0; }
+        
+        .corner-br { bottom: 20px; right: 20px; }
+        .corner-br::before { width: 1px; height: 20px; bottom: 0; right: 0; }
+        .corner-br::after { width: 20px; height: 1px; bottom: 0; right: 0; }
+
+        /* Elegant image shadow - single smooth layer */
+        .image-shadow {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Burgundy accent color - for small accents only */
+        .text-burgundy { color: #8b4a4a; }
+        .text-burgundy-light { color: #a06565; }
+
+        /* Calculate slide positioning for UI alignment */
+        .ui-container {
+            position: fixed;
+            width: min(92vw, 164vh);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Print Styles for PDF Export */
+        @media print {
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Roman numeral converter
+        const toRoman = (num) => {
+            const romanNumerals = [
+                ['VI', 6], ['V', 5], ['IV', 4], ['III', 3], ['II', 2], ['I', 1]
+            ];
+            let result = '';
+            for (let [roman, value] of romanNumerals) {
+                while (num >= value) {
+                    result += roman;
+                    num -= value;
+                }
+            }
+            return result;
+        };
+
+        // Slide 1: Introduction
+        const Slide1 = () => (
+            <div className="w-full h-full flex flex-row p-[4%]">
+                
+                {/* Corner frames */}
+                <div className="corner-frame corner-tl"></div>
+                <div className="corner-frame corner-tr"></div>
+                <div className="corner-frame corner-bl"></div>
+                <div className="corner-frame corner-br"></div>
+                
+                {/* Left Column: Image */}
+                <div className="w-[55%] h-full flex flex-col justify-center">
+                    <div className="relative image-shadow">
+                        <img 
+                            src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1767472315/MainRoom_IntoFront_mmhmxl.png" 
+                            alt="Night on the Sun Interior" 
+                            className="w-full h-auto object-contain"
+                        />
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            Main Room, Looking South
+                        </div>
+                    </div>
+                </div>
+
+                {/* Thin vertical divider */}
+                <div className="w-[1px] mx-[3%] self-stretch bg-white/[0.08]"></div>
+
+                {/* Right Column: Text */}
+                <div className="flex-1 h-full flex flex-col justify-between py-[1%]">
+                    
+                    {/* Top Section */}
+                    <div>
+                        <div className="flex items-center gap-3 mb-8">
+                            <div className="h-[1px] w-5 bg-[#a08d7d]/60"></div>
+                            <span className="font-modern text-[8px] tracking-[0.35em] uppercase text-[#a08d7d]/70">
+                                Press Release
+                            </span>
+                        </div>
+                        
+                        <h1 className="font-old-world text-[4vw] leading-[0.95] text-[#e8e6e1] tracking-[-0.01em] mb-4">
+                            Night on the Sun
+                        </h1>
+
+                        {/* Tagline - burgundy accent */}
+                        <p className="font-modern text-[9px] tracking-[0.3em] uppercase text-burgundy-light mb-6">
+                            A Destination for the Curious
+                        </p>
+                        
+                        {/* Location - clear and readable */}
+                        <p className="font-modern text-[9px] tracking-[0.2em] uppercase text-[#a08d7d]/70 pb-5 border-b border-white/[0.08]">
+                            Cairo, New York — Est. Spring 2026
+                        </p>
+                    </div>
+
+                    {/* Middle Section */}
+                    <div className="space-y-5">
+                        <p className="font-old-world text-[1.3vw] leading-[1.5] text-[#c5c0b8]">
+                            Night on the Sun is a new retail and gallery destination. Uniting the vitality of a garden store, the intention of a gallery, and the wonder of a museum, it offers a carefully curated collection of objects for interiors, gardens, and the spaces in between.
+                        </p>
+                        
+                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-[#9a958d] italic">
+                            Rooted in craft, curiosity, and discovery, it is a place where objects are not simply bought, but found.
+                        </p>
+                    </div>
+
+                    {/* Bottom Section */}
+                    <div className="space-y-5">
+                        <div className="pt-5 border-t border-white/[0.08]">
+                            <p className="font-modern text-[8px] leading-[1.9] tracking-[0.06em] uppercase text-[#5a5650]">
+                                Founded by the team behind Hort & Pott, Night on the Sun represents a natural evolution—an expansion of a deeply personal studio practice into a broader curatorial world.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <span className="font-old-world italic text-base text-burgundy">Inquiries</span>
+                            <a href="mailto:press@nightonthesun.com" className="block font-modern text-[8px] tracking-[0.2em] text-[#6b665e] hover:text-[#c5c0b8] transition-colors uppercase mt-1">
+                                press@nightonthesun.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        // Slide 2: The Story - Flipped layout
+        const Slide2 = () => (
+            <div className="w-full h-full flex flex-row p-[4%]">
+                
+                {/* Corner frames */}
+                <div className="corner-frame corner-tl"></div>
+                <div className="corner-frame corner-tr"></div>
+                <div className="corner-frame corner-bl"></div>
+                <div className="corner-frame corner-br"></div>
+                
+                {/* Left Column: Text */}
+                <div className="w-[42%] h-full flex flex-col py-[1%] pr-[2%]">
+                    
+                    {/* Top Section */}
+                    <div>
+                        <div className="flex items-center gap-3 mb-8">
+                            <div className="h-[1px] w-5 bg-[#a08d7d]/60"></div>
+                            <span className="font-modern text-[8px] tracking-[0.35em] uppercase text-[#a08d7d]/70">
+                                Press Release
+                            </span>
+                        </div>
+                        
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-[#e8e6e1] tracking-[-0.01em] mb-8">
+                            The Story
+                        </h2>
+                    </div>
+
+                    {/* Body Copy */}
+                    <div className="space-y-6 flex-1">
+                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-[#c5c0b8]">
+                            Night on the Sun was born from a long-held desire to create a physical space devoted to discovery.
+                        </p>
+                        
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-[#a09a92]">
+                            After years of working through Hort & Pott—building a studio practice grounded in seasonality, material exploration, and handmade process—founders Todd Carr and Carter Harrington found themselves drawn toward something larger: a place that could hold not only their own work, but a wider constellation of objects, makers, and ideas.
+                        </p>
+                        
+                        <p className="font-old-world text-[1.05vw] leading-[1.6] text-[#8a857e]">
+                            As the vision expanded to include larger-scale works, collaborative pieces, and a more immersive retail experience, it became clear that this next chapter required its own identity. Night on the Sun was created to hold that expansion—adjacent in spirit to Hort & Pott, yet distinct in purpose.
+                        </p>
+                    </div>
+
+                    {/* Bottom - Pull quote */}
+                    <div className="pt-6 border-t border-white/[0.08] mt-auto">
+                        <p className="font-old-world text-[1.15vw] leading-[1.5] text-[#9a958d] italic">
+                            More than a storefront, Night on the Sun is an invitation to slow down, look closer, and engage with objects that carry presence, history, and intention.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Thin vertical divider */}
+                <div className="w-[1px] mx-[3%] self-stretch bg-white/[0.08]"></div>
+
+                {/* Right Column: Image */}
+                <div className="flex-1 h-full flex flex-col justify-center">
+                    <div className="relative image-shadow">
+                        <img 
+                            src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1767476042/LookingTowards_Jungle_qmq8eu.png" 
+                            alt="Looking Towards Jungle Room" 
+                            className="w-full h-auto object-contain"
+                        />
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            The Jungle Room, Morning Light
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        const App = () => {
+            const [currentSlide, setCurrentSlide] = useState(0);
+            const totalSlides = 6;
+            const slides = [Slide1, Slide2];
+
+            const nextSlide = () => {
+                if (currentSlide < slides.length - 1) {
+                    setCurrentSlide(currentSlide + 1);
+                }
+            };
+
+            const prevSlide = () => {
+                if (currentSlide > 0) {
+                    setCurrentSlide(currentSlide - 1);
+                }
+            };
+
+            const CurrentSlideComponent = slides[currentSlide];
+
+            return (
+                <div className="w-screen h-screen bg-[#252422] flex items-center justify-center">
+                    
+                    {/* 16:9 Slide Frame */}
+                    <div className="slide-frame">
+                        <CurrentSlideComponent />
+                    </div>
+
+                    {/* Top UI container - aligned with slide, moved farther */}
+                    <div className="ui-container no-print" style={{ top: 'calc(50% - min(25.875vw, 46vh) - 56px)' }}>
+                        <div className="flex justify-end">
+                            <button 
+                                onClick={() => window.print()}
+                                className="bg-transparent hover:bg-white/5 border border-white/10 text-white/40 hover:text-white/70 px-5 py-2 rounded-sm font-modern text-[8px] tracking-[0.2em] uppercase transition-all duration-300"
+                            >
+                                Download PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Bottom UI container - aligned with slide, moved farther */}
+                    <div className="ui-container no-print" style={{ bottom: 'calc(50% - min(25.875vw, 46vh) - 56px)' }}>
+                        <div className="flex justify-between items-center">
+                            {/* Previous Button */}
+                            <div className="w-8">
+                                {currentSlide > 0 && (
+                                    <button 
+                                        onClick={prevSlide}
+                                        className="text-[#a08d7d]/70 hover:text-[#a08d7d] transition-colors duration-300"
+                                    >
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                    </button>
+                                )}
+                            </div>
+
+                            {/* Page Count - Roman numerals */}
+                            <span className="font-old-world text-[11px] tracking-[0.2em] text-white/30">
+                                {toRoman(currentSlide + 1)} of {toRoman(totalSlides)}
+                            </span>
+
+                            {/* Next Button */}
+                            <div className="w-8 flex justify-end">
+                                {currentSlide < slides.length - 1 && (
+                                    <button 
+                                        onClick={nextSlide}
+                                        className="text-[#a08d7d]/70 hover:text-[#a08d7d] transition-colors duration-300"
+                                    >
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
