@@ -72,7 +72,9 @@ export default function SlideNavigation({
             {/* Top UI: PDF Download */}
             <div
                 className="fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
-                style={{ top: "calc(50% - min(25.875vw, 46vh) - 80px)" }}
+                style={{
+                    top: "max(16px, calc(50% - min(25.875vw, 46vh) - 80px))",
+                }}
             >
                 <div className="flex justify-end pointer-events-auto">
                     <button
@@ -87,7 +89,9 @@ export default function SlideNavigation({
             {/* Bottom UI: Navigation */}
             <div
                 className="fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
-                style={{ bottom: "calc(50% - min(25.875vw, 46vh) - 80px)" }}
+                style={{
+                    bottom: "max(16px, calc(50% - min(25.875vw, 46vh) - 80px))",
+                }}
             >
                 <div className="flex justify-between items-center pointer-events-auto">
                     {/* Previous Button */}
