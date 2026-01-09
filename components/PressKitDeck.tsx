@@ -18,7 +18,12 @@ export default function PressKitDeck() {
     const deckRef = useRef<Reveal.Api | null>(null);
     const totalSlides = 7;
     const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-    const isPrint = typeof window !== "undefined" && window.location.search.includes("print-pdf");
+    const isPrint =
+        typeof window !== "undefined" &&
+        window.location.search.includes("print-pdf");
+    const isPdfDownload =
+        typeof window !== "undefined" &&
+        window.location.search.includes("pdf=1");
 
     useEffect(() => {
         // Prevent double initialization in strict mode
@@ -53,7 +58,7 @@ export default function PressKitDeck() {
             // Set initial index if hash is present
             setCurrentSlide(deck.getIndices().h);
 
-            if (isPrint) {
+            if (isPrint && !isPdfDownload) {
                 requestAnimationFrame(() => {
                     window.print();
                 });

@@ -37,10 +37,34 @@ export default function SlideNavigation({
     onNext,
     onPrev,
 }: SlideNavigationProps) {
+    const [isDownloading, setIsDownloading] = React.useState(false);
+
     const handlePrint = () => {
-        const url = new URL(window.location.href);
-        url.searchParams.set("print-pdf", "true");
-        window.open(url.toString(), "_blank", "noopener");
+        if (isDownloading) return;
+        setIsDownloading(true);
+
+        fetch("/api/presskit-pdf")
+            .then((response) => {
+                if (!response.ok) {
+                    return response.text().then((message) => {
+                        throw new Error(message || "Failed to generate PDF");
+                    });
+                }
+                return response.blob();
+            })
+            .then((blob) => {
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "nots-presskit.pdf";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                window.URL.revokeObjectURL(url);
+            })
+            .finally(() => {
+                setIsDownloading(false);
+            });
     };
 
     return (
