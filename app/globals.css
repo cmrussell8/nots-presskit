@@ -109,7 +109,7 @@ body {
   color: var(--color-text-muted);
 }
 
-@media (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 1024px) and (orientation: portrait) and (hover: none) and (pointer: coarse) {
   .orientation-lock {
     display: flex;
   }
