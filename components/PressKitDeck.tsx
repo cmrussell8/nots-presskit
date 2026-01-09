@@ -17,12 +17,12 @@ export default function PressKitDeck() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const deckRef = useRef<Reveal.Api | null>(null);
     const totalSlides = 7;
+    const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+    const isPrint = typeof window !== "undefined" && window.location.search.includes("print-pdf");
 
     useEffect(() => {
         // Prevent double initialization in strict mode
         if (deckRef.current) return;
-
-        const isPrint = window.location.search.includes("print-pdf");
 
         const deck = new Reveal({
             width: 1920,
@@ -82,10 +82,36 @@ export default function PressKitDeck() {
         deckRef.current?.prev();
     };
 
+    const handleTouchStart = (event: React.TouchEvent) => {
+        if (isPrint) return;
+        const touch = event.touches[0];
+        touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    };
+
+    const handleTouchEnd = (event: React.TouchEvent) => {
+        if (isPrint) return;
+        const start = touchStartRef.current;
+        if (!start) return;
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - start.x;
+        const deltaY = touch.clientY - start.y;
+        touchStartRef.current = null;
+
+        if (Math.abs(deltaX) > 40 && Math.abs(deltaY) < 60) {
+            if (deltaX < 0) {
+                handleNext();
+            } else {
+                handlePrev();
+            }
+        }
+    };
+
     return (
         <>
             <div
                 className="presskit-frame absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[92vw]"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
                 style={{
                     aspectRatio: "16/9",
                     maxHeight: "92vh",

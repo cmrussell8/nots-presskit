@@ -15,26 +15,29 @@ export default function Slide3Concept() {
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up">
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             The Concept
                         </h2>
                     </div>
 
                     <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left auto-fade-up">
-                            Night on the Sun is a hybrid space: part garden store, part gallery, part retail destination. The
-                            assortment spans furnishings, sculpture, botanicals, and rare objects chosen not for trend or
+                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
+                            Night on the Sun is a hybrid space: part garden store, part gallery, part retail destination.
+                        </p>
+
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
+                            The assortment spans furnishings, sculpture, botanicals, and rare objects chosen not for trend or
                             spectacle, but for their ability to endure—pieces shaped by hand, time, and imagination.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body-secondary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
                             The experience is designed to feel discovered rather than transactional. Displays evoke excavation
                             sites and hidden chambers, where objects appear unearthed and quietly revealed. Short texts and
                             subtle narratives offer context without explanation, allowing visitors to form their own
                             connections.
                         </p>
 
-                        <p className="font-old-world text-[1.05vw] leading-[1.6] text-text-body-tertiary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-5">
                             The result is a space that bridges the everyday and the extraordinary—distinctive, yet approachable;
                             considered, yet alive.
                         </p>
@@ -53,7 +56,7 @@ export default function Slide3Concept() {
                             alt="Front looking into main room"
                             className="w-full h-auto object-contain"
                         />
-                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-5">
                             Front, Looking into Main
                         </div>
                     </div>
