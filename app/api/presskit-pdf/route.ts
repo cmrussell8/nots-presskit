@@ -62,12 +62,15 @@ export async function GET(request: Request) {
     await page.goto(target.toString(), { waitUntil: "networkidle0" });
     await page.emulateMediaType("print");
 
-    await page
-      .waitForFunction(
-        () => document.documentElement.classList.contains("print-pdf"),
-        { timeout: 5000 }
-      )
-      .catch(() => {});
+    await page.waitForFunction(
+      () => document.documentElement.classList.contains("reveal-print"),
+      { timeout: 10000 }
+    );
+
+    await page.waitForFunction(
+      () => document.querySelectorAll(".pdf-page").length > 0,
+      { timeout: 10000 }
+    );
 
     const pdf = await page.pdf({
       printBackground: true,

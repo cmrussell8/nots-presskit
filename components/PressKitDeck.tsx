@@ -29,6 +29,10 @@ export default function PressKitDeck() {
         // Prevent double initialization in strict mode
         if (deckRef.current) return;
 
+        if (isPrint) {
+            document.documentElement.classList.add("reveal-print", "print-pdf");
+        }
+
         const deck = new Reveal({
             width: 1920,
             height: 1080,
@@ -75,6 +79,12 @@ export default function PressKitDeck() {
                 }
             } catch (e) {
                 console.warn("Reveal cleanup error", e);
+            }
+            if (isPrint) {
+                document.documentElement.classList.remove(
+                    "reveal-print",
+                    "print-pdf"
+                );
             }
         };
     }, []);
@@ -133,7 +143,11 @@ export default function PressKitDeck() {
                     `
                 }}
             >
-                <div className="reveal w-full h-full rounded-[2px] overflow-hidden">
+                <div
+                    className={`reveal w-full h-full rounded-[2px] ${
+                        isPrint ? "overflow-visible" : "overflow-hidden"
+                    }`}
+                >
                     <div className="slides">
                         <Slide1Introduction />
                         <Slide2Story />
