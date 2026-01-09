@@ -55,7 +55,10 @@
   left: 0;
   padding: 0;
   margin: 0;
+  position: relative;
 }
+
+
 
 /* Ensure no default background on the viewport if specific class exists */
 .reveal-viewport {
@@ -70,6 +73,46 @@
 body {
   background-color: var(--color-page-bg);
   color: var(--color-text-body);
+}
+
+.orientation-lock {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 36, 34, 0.96);
+  z-index: 500;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.orientation-lock__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orientation-lock__label {
+  font-family: var(--font-modern);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.orientation-lock__subtext {
+  font-family: var(--font-modern);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 1024px) and (orientation: portrait) {
+  .orientation-lock {
+    display: flex;
+  }
 }
 
 @keyframes presskitFadeUp {
@@ -90,6 +133,55 @@ body {
 
 .reveal .slides section.present .auto-fade-up {
   animation: presskitFadeUp 0.6s ease-out both;
+  animation-delay: var(--auto-delay, 0ms);
+}
+
+.auto-delay-1 {
+  --auto-delay: 80ms;
+}
+
+.auto-delay-2 {
+  --auto-delay: 160ms;
+}
+
+.auto-delay-3 {
+  --auto-delay: 240ms;
+}
+
+.auto-delay-4 {
+  --auto-delay: 320ms;
+}
+
+.auto-delay-5 {
+  --auto-delay: 400ms;
+}
+
+.auto-delay-6 {
+  --auto-delay: 480ms;
+}
+
+.auto-delay-7 {
+  --auto-delay: 560ms;
+}
+
+.auto-delay-8 {
+  --auto-delay: 640ms;
+}
+
+.auto-delay-9 {
+  --auto-delay: 720ms;
+}
+
+.auto-delay-10 {
+  --auto-delay: 800ms;
+}
+
+.auto-delay-11 {
+  --auto-delay: 880ms;
+}
+
+.auto-delay-12 {
+  --auto-delay: 960ms;
 }
 
 @media print {

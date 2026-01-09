@@ -14,8 +14,8 @@ export default function Slide1Introduction() {
                             alt="Night on the Sun Interior"
                             className="w-full h-auto object-contain"
                         />
-                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
-                            Main Room, Looking South
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-2">
+                            MAIN ROOM, INTO FRONT
                         </div>
                     </div>
                 </div>
@@ -34,24 +34,24 @@ export default function Slide1Introduction() {
                             </span>
                         </div>
 
-                        <h1 className="font-old-world text-[4vw] leading-[0.95] text-text-primary tracking-[-0.01em] mb-12 text-left">
+                        <h1 className="font-old-world text-[4vw] leading-[0.95] text-text-primary tracking-[-0.01em] mb-12 text-left auto-fade-up auto-delay-1">
                             Night on the Sun
                         </h1>
 
                         {/* Tagline - burgundy accent */}
-                        <p className="font-modern text-[11px] tracking-[0.3em] uppercase text-burgundy-light mb-6 text-left">
+                        <p className="font-modern text-[11px] tracking-[0.3em] uppercase text-burgundy-light mb-6 text-left auto-fade-up auto-delay-2">
                             A Destination for the Curious
                         </p>
 
                         {/* Location - clear and readable */}
-                        <p className="font-modern text-[9px] tracking-[0.2em] uppercase text-accent-clay/70 pb-5 border-b border-divider text-left">
+                        <p className="font-modern text-[9px] tracking-[0.2em] uppercase text-accent-clay/70 pb-5 border-b border-divider text-left auto-fade-up auto-delay-3">
                             Cairo, New York — Est. Spring 2026
                         </p>
                     </div>
 
                     {/* Middle Section */}
-                    <div className="space-y-5">
-                        <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left">
+                    <div className="space-y-5 -mt-4">
+                        <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left auto-fade-up auto-delay-4">
                             Night on the Sun is a new retail and gallery destination.
                             Uniting the vitality of a garden store, the intention of a
                             gallery, and the wonder of a museum, it offers a carefully
@@ -59,7 +59,7 @@ export default function Slide1Introduction() {
                             spaces in between.
                         </p>
 
-                        <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left">
+                        <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left auto-fade-up auto-delay-5">
                             Rooted in craft, curiosity, and discovery, it is a place where
                             objects are not simply bought, but found.
                         </p>
@@ -68,7 +68,7 @@ export default function Slide1Introduction() {
                     {/* Bottom Section */}
                     <div className="space-y-5 mb-3">
                         <div className="pt-5 border-t border-divider">
-                            <p className="font-modern text-[10px] leading-[1.9] tracking-[0.06em] uppercase text-text-body-secondary text-left">
+                            <p className="font-modern text-[11px] leading-[1.9] tracking-[0.06em] uppercase text-text-body-secondary text-left auto-fade-up auto-delay-6">
                                 Founded by the team behind Hort & Pott, Night on the Sun
                                 represents a natural evolution—an expansion of a deeply
                                 personal studio practice into a broader curatorial world.
@@ -76,12 +76,12 @@ export default function Slide1Introduction() {
                         </div>
 
                         <div className="text-left">
-                            <span className="font-old-world italic text-base text-burgundy">
+                            <span className="font-old-world italic text-base text-burgundy auto-fade-up auto-delay-7">
                                 Inquiries
                             </span>
                             <a
                                 href="mailto:press@nightonthesun.com"
-                                className="block font-modern text-[9px] tracking-[0.2em] text-[#6b665e] hover:text-text-body transition-colors uppercase mt-1"
+                                className="block font-modern text-[9px] tracking-[0.2em] text-[#6b665e] hover:text-text-body transition-colors uppercase mt-1 auto-fade-up auto-delay-8"
                             >
                                 press@nightonthesun.com
                             </a>

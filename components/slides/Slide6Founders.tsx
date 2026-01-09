@@ -14,23 +14,23 @@ export default function Slide6Founders() {
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left">
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             Founders
                         </h2>
                     </div>
 
                     <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left">
+                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
                             Night on the Sun was founded by Carter Harrington (CEO) and Todd Carr (Creative Director),
                             the duo behind Hort &amp; Pott.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body-secondary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
                             Together, they have built a practice rooted in craft, material curiosity, and a deep respect
                             for process.
                         </p>
 
-                        <p className="font-old-world text-[1.05vw] leading-[1.6] text-text-body-tertiary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
                             Where Hort &amp; Pott remains a deeply personal studio expression, Night on the Sun allows the
                             founders' vision to expand beyond a single voice, becoming a collaborative platform for
                             discovery, dialogue, and growth.
@@ -51,26 +51,23 @@ export default function Slide6Founders() {
                                 alt="Todd Carr and Carter Harrington"
                                 className="w-full h-auto object-contain"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
-                                Todd Carr &amp; Carter Harrington
-                            </div>
                         </div>
 
                         <div className="space-y-3">
                             <div className="flex flex-col">
-                                <span className="font-old-world text-[1.2vw] text-text-body">
+                                <span className="font-old-world text-[1.2vw] text-text-body auto-fade-up auto-delay-5">
                                     Carter Harrington
                                 </span>
-                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70">
+                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-5">
                                     CEO
                                 </span>
                             </div>
 
                             <div className="flex flex-col">
-                                <span className="font-old-world text-[1.2vw] text-text-body">
+                                <span className="font-old-world text-[1.2vw] text-text-body auto-fade-up auto-delay-6">
                                     Todd Carr
                                 </span>
-                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70">
+                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-6">
                                     Creative Director
                                 </span>
                             </div>

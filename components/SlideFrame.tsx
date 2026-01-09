@@ -9,6 +9,20 @@ const CornerFrame = ({
 }: {
     position: "tl" | "tr" | "bl" | "br";
 }) => {
+    if (position === "bl") {
+        return (
+            <div className="absolute bottom-6 left-6 pointer-events-none z-50 opacity-70">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1767924722/Corner_2_qtbwlk.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-16 h-16"
+                />
+            </div>
+        );
+    }
+
     const baseClasses =
         "absolute w-5 h-5 pointer-events-none z-50 text-corner-frame";
     const positions = {
@@ -55,6 +69,7 @@ export default function SlideFrame({ children }: SlideFrameProps) {
             <div className="w-full h-full relative z-10">
                 {children}
             </div>
+
         </div>
     );
 }

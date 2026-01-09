@@ -16,19 +16,19 @@ export default function Slide2Story() {
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up">
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             The Story
                         </h2>
                     </div>
 
                     {/* Body Copy */}
                     <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left italic auto-fade-up">
+                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
                             Night on the Sun was born from a long-held desire to create a
                             physical space devoted to discovery.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body-secondary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
                             After years of working through Hort & Pott—building a studio
                             practice grounded in seasonality, material exploration, and
                             handmade process—founders Todd Carr and Carter Harrington found
@@ -37,7 +37,7 @@ export default function Slide2Story() {
                             objects, makers, and ideas.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body-secondary text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
                             As the vision expanded to include larger-scale works,
                             collaborative pieces, and a more immersive retail experience, it
                             became clear that this next chapter required its own identity.
@@ -48,7 +48,7 @@ export default function Slide2Story() {
 
                     {/* Bottom - Pull quote */}
                     <div className="pt-6 border-t border-divider mt-auto mb-6">
-                        <p className="font-modern text-[10px] leading-[1.9] tracking-[0.06em] uppercase text-burgundy text-left">
+                        <p className="font-modern text-[11px] leading-[1.9] tracking-[0.06em] uppercase text-burgundy text-left auto-fade-up auto-delay-5">
                             More than a storefront, Night on the Sun is an invitation to
                             slow down, look closer, and engage with objects that carry
                             presence, history, and intention.
@@ -66,33 +66,53 @@ export default function Slide2Story() {
                             className="flex items-center justify-center border border-divider text-text-body-secondary"
                             style={{ aspectRatio: "4 / 3" }}
                         >
-                            <span className="font-modern text-[9px] tracking-[0.3em] uppercase">
-                                Hort &amp; Pott
-                            </span>
+                            <div className="flex flex-col items-center gap-2 text-center">
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-2">
+                                    WIP
+                                </span>
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-3">
+                                    Hort &amp; Pott Photo
+                                </span>
+                            </div>
                         </div>
                         <div
                             className="flex items-center justify-center border border-divider text-text-body-secondary"
                             style={{ aspectRatio: "4 / 3" }}
                         >
-                            <span className="font-modern text-[9px] tracking-[0.3em] uppercase text-center">
-                                Storefront before Remodel
-                            </span>
+                            <div className="flex flex-col items-center gap-2 text-center">
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-4">
+                                    WIP
+                                </span>
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase text-center auto-fade-up auto-delay-5">
+                                    NOTS Before Remodel Photo
+                                </span>
+                            </div>
                         </div>
                         <div
                             className="flex items-center justify-center border border-divider text-text-body-secondary"
                             style={{ aspectRatio: "4 / 3" }}
                         >
-                            <span className="font-modern text-[9px] tracking-[0.3em] uppercase">
-                                Construction Photo
-                            </span>
+                            <div className="flex flex-col items-center gap-2 text-center">
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-6">
+                                    WIP
+                                </span>
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-7">
+                                    Construction Photo
+                                </span>
+                            </div>
                         </div>
                         <div
                             className="flex items-center justify-center border border-divider text-text-body-secondary"
                             style={{ aspectRatio: "4 / 3" }}
                         >
-                            <span className="font-modern text-[9px] tracking-[0.3em] uppercase">
-                                Final NOTS
-                            </span>
+                            <div className="flex flex-col items-center gap-2 text-center">
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-8">
+                                    WIP
+                                </span>
+                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-9">
+                                    NOTS Remodeled Photo
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

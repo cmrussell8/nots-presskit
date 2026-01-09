@@ -17,7 +17,7 @@ export default function Slide4Space() {
                                 alt="Checkout counter"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-2">
                                 Checkout Counter
                             </div>
                         </div>
@@ -32,7 +32,7 @@ export default function Slide4Space() {
                                 alt="Front room gallery"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-3">
                                 Front Room Gallery
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export default function Slide4Space() {
                                 alt="Front looking into main room"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-4">
                                 Front, Looking into Main
                             </div>
                         </div>
@@ -62,7 +62,7 @@ export default function Slide4Space() {
                                 alt="Facing cabinetry shrine"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-5">
                                 Facing Cabinetry Shrine
                             </div>
                         </div>
@@ -73,7 +73,7 @@ export default function Slide4Space() {
                 <div className="w-px mx-[3%] self-stretch bg-divider"></div>
 
                 {/* Right Column: Text */}
-                <div className="w-[42%] h-full flex flex-col py-[1%] pl-[2%] text-left">
+                <div className="w-[42%] h-full flex flex-col pt-[1%] pb-0 pl-[2%] text-left">
                     <div>
                         <div className="flex items-center gap-3 mb-8">
                             <div className="h-px w-5 bg-accent-clay/60"></div>
@@ -82,32 +82,27 @@ export default function Slide4Space() {
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left">
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             The Space
                         </h2>
                     </div>
 
-                    <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left">
+                    <div className="flex flex-col gap-6 flex-1">
+                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left auto-fade-up auto-delay-2">
                             The interior of Night on the Sun is immersive and atmospheric, shaped by texture, shadow, and
                             materiality. A restrained palette—anchored by sandy papyrus tones, deep charcoal, and red—creates
                             a backdrop for objects to stand with quiet authority.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body-secondary text-left">
+                        <p className="font-old-world text-[1.2vw] leading-[1.55] text-text-body text-left auto-fade-up auto-delay-3">
                             The space is informed by elemental references and a sense of ritual rather than literal
                             storytelling. Ancient and contemporary influences coexist, creating an environment that feels
                             timeless, grounded, and open-ended. Visitors are encouraged to linger, explore, and encounter
                             objects at their own pace.
                         </p>
 
-                        <div className="space-y-4 pt-2">
-                            <p className="font-old-world text-[1.15vw] leading-[1.55] text-text-body text-left">
-                                The assortment spans furnishings, sculpture, botanicals, and rare objects chosen not for
-                                trend or spectacle, but for their ability to endure—pieces shaped by hand, time, and
-                                imagination.
-                            </p>
-                            <p className="font-modern text-[9px] tracking-[0.3em] uppercase text-burgundy text-left mt-2">
+                        <div className="pt-6 mt-auto border-t border-divider auto-fade-up auto-delay-5">
+                            <p className="font-modern text-[10px] tracking-[0.3em] uppercase text-burgundy text-left mt-4">
                                 Furnishings • Sculpture • Botanicals • Rare Objects
                             </p>
                         </div>
