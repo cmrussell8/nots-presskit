@@ -52,6 +52,10 @@ export default function PressKitDeck() {
 
         deck.initialize().then(() => {
             deckRef.current = deck;
+            const windowWithReveal = window as Window & {
+                __presskitReveal?: Reveal.Api;
+            };
+            windowWithReveal.__presskitReveal = deck;
 
             // Sync React state with Reveal state
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,6 +83,12 @@ export default function PressKitDeck() {
                 }
             } catch (e) {
                 console.warn("Reveal cleanup error", e);
+            }
+            const windowWithReveal = window as Window & {
+                __presskitReveal?: Reveal.Api;
+            };
+            if (windowWithReveal.__presskitReveal === deckRef.current) {
+                windowWithReveal.__presskitReveal = undefined;
             }
             if (isPrint) {
                 document.documentElement.classList.remove(
