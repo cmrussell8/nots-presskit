@@ -18,12 +18,73 @@ export default function PressKitDeck() {
     const deckRef = useRef<Reveal.Api | null>(null);
     const totalSlides = 7;
     const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+    const [showSwipeHint, setShowSwipeHint] = useState(false);
     const isPrint =
         typeof window !== "undefined" &&
         window.location.search.includes("print-pdf");
     const isPdfDownload =
         typeof window !== "undefined" &&
         window.location.search.includes("pdf=1");
+
+    useEffect(() => {
+        const updateVh = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty(
+                "--presskit-vh",
+                `${vh}px`
+            );
+        };
+        updateVh();
+        window.addEventListener("resize", updateVh);
+        window.addEventListener("orientationchange", updateVh);
+        return () => {
+            window.removeEventListener("resize", updateVh);
+            window.removeEventListener("orientationchange", updateVh);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const media = window.matchMedia("(hover: none) and (pointer: coarse)");
+        const update = () => setIsTouchDevice(media.matches);
+        update();
+        if (media.addEventListener) {
+            media.addEventListener("change", update);
+        } else {
+            media.addListener(update);
+        }
+        return () => {
+            if (media.removeEventListener) {
+                media.removeEventListener("change", update);
+            } else {
+                media.removeListener(update);
+            }
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isTouchDevice) return;
+        if (typeof window === "undefined") return;
+        const hasSeenHint = window.localStorage.getItem(
+            "presskitSwipeHintSeen"
+        );
+        if (hasSeenHint) return;
+        setShowSwipeHint(true);
+        const timer = window.setTimeout(() => {
+            window.localStorage.setItem("presskitSwipeHintSeen", "true");
+            setShowSwipeHint(false);
+        }, 2500);
+        return () => window.clearTimeout(timer);
+    }, [isTouchDevice]);
+
+    useEffect(() => {
+        if (!isTouchDevice) return;
+        if (!showSwipeHint) return;
+        if (currentSlide === 0) return;
+        window.localStorage.setItem("presskitSwipeHintSeen", "true");
+        setShowSwipeHint(false);
+    }, [currentSlide, isTouchDevice, showSwipeHint]);
 
     useEffect(() => {
         // Prevent double initialization in strict mode
@@ -130,6 +191,10 @@ export default function PressKitDeck() {
             } else {
                 handlePrev();
             }
+            if (isTouchDevice && showSwipeHint) {
+                window.localStorage.setItem("presskitSwipeHintSeen", "true");
+                setShowSwipeHint(false);
+            }
         }
     };
 
@@ -178,6 +243,12 @@ export default function PressKitDeck() {
                 onNext={handleNext}
                 onPrev={handlePrev}
             />
+
+            {isTouchDevice && showSwipeHint && currentSlide === 0 && (
+                <div className="presskit-swipe-hint" aria-hidden="true">
+                    Swipe left to continue
+                </div>
+            )}
         </>
     );
 }

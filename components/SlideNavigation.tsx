@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { usePresskitDownload } from "./usePresskitDownload";
 
 interface SlideNavigationProps {
     currentSlide: number;
@@ -37,86 +38,31 @@ export default function SlideNavigation({
     onNext,
     onPrev,
 }: SlideNavigationProps) {
-    const [isDownloading, setIsDownloading] = React.useState(false);
-    const manifestUrl = process.env.NEXT_PUBLIC_PRESSKIT_MANIFEST_URL;
-
-    const handlePrint = async () => {
-        if (isDownloading) return;
-        setIsDownloading(true);
-
-        const defaultUrl = "/api/presskit-pdf";
-        let targetUrl = defaultUrl;
-
-        const downloadFrom = async (url: string) => {
-            const response = await fetch(url);
-            if (!response.ok) {
-                const message = await response.text();
-                throw new Error(message || "Failed to generate PDF");
-            }
-            const blob = await response.blob();
-            const objectUrl = window.URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = objectUrl;
-            link.download = "nots-presskit.pdf";
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            window.URL.revokeObjectURL(objectUrl);
-        };
-
-        try {
-            if (manifestUrl) {
-                try {
-                    const manifestResponse = await fetch(manifestUrl, {
-                        cache: "no-store",
-                    });
-                    if (manifestResponse.ok) {
-                        const manifest = await manifestResponse.json();
-                        if (manifest?.url) {
-                            targetUrl = manifest.url;
-                        }
-                    }
-                } catch (error) {
-                    console.warn("Failed to load PDF manifest", error);
-                }
-            }
-
-            try {
-                await downloadFrom(targetUrl);
-            } catch (error) {
-                if (targetUrl !== defaultUrl) {
-                    await downloadFrom(defaultUrl);
-                } else {
-                    throw error;
-                }
-            }
-        } finally {
-            setIsDownloading(false);
-        }
-    };
+    const { isDownloading, handleDownload } = usePresskitDownload();
 
     return (
         <>
             {/* Top UI: PDF Download */}
             <div
-                className="fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
+                className="presskit-ui fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
                 style={{
                     top: "max(16px, calc(50% - min(25.875vw, 46vh) - 80px))",
                 }}
             >
                 <div className="flex justify-end pointer-events-auto">
                     <button
-                        onClick={handlePrint}
+                        onClick={handleDownload}
+                        disabled={isDownloading}
                         className="bg-white/5 hover:bg-transparent border border-divider text-text-primary hover:text-text-muted px-5 py-2 rounded-sm font-modern text-[8px] tracking-[0.2em] uppercase transition-all duration-300 cursor-pointer"
                     >
-                        Download PDF
+                        {isDownloading ? "Downloading..." : "Download PDF"}
                     </button>
                 </div>
             </div>
 
             {/* Bottom UI: Navigation */}
             <div
-                className="fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
+                className="presskit-ui fixed left-1/2 -translate-x-1/2 w-[min(92vw,164vh)] pointer-events-none z-[200] no-print"
                 style={{
                     bottom: "max(16px, calc(50% - min(25.875vw, 46vh) - 80px))",
                 }}
