@@ -325,6 +325,21 @@ body {
   --auto-delay: 960ms;
 }
 
+body.pdf-export .no-print,
+body.pdf-export .orientation-lock {
+  display: none !important;
+}
+
+body.pdf-export .presskit-frame {
+  box-shadow: none !important;
+}
+
+body.pdf-export .auto-fade-up {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
 @media print {
   html,
   body {

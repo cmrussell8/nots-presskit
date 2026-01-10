@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:presskit-pdf": "node scripts/generate-presskit-pdf.mjs"
   },
   "dependencies": {
+    "@vercel/blob": "^1.1.0",
     "@sparticuz/chromium": "^143.0.4",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
+    "pdf-lib": "^1.17.1",
     "puppeteer-core": "^24.34.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
