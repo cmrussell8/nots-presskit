@@ -80,7 +80,10 @@ try {
   const targetUrl = new URL(exportUrl);
   targetUrl.searchParams.set("pdf", "1");
 
-  await page.goto(targetUrl.toString(), { waitUntil: "networkidle0" });
+  const response = await page.goto(targetUrl.toString(), {
+    waitUntil: "networkidle0",
+  });
+  console.log(`[page] response status ${response?.status() ?? "unknown"}`);
   await page.emulateMediaType("screen");
   await page.evaluate(() => {
     document.body.classList.add("pdf-export");
