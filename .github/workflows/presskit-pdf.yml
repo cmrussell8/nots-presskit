@@ -26,3 +26,5 @@ jobs:
           PRESSKIT_EXPORT_URL: ${{ vars.PRESSKIT_EXPORT_URL || secrets.PRESSKIT_EXPORT_URL || github.event.deployment_status.target_url }}
           PRESSKIT_SHA: ${{ github.event.deployment.sha }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          PRESSKIT_PDF_SCALE: "3"
+          PRESSKIT_PDF_JPEG_QUALITY: "96"
