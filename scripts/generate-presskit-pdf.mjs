@@ -142,7 +142,7 @@ try {
       index
     );
 
-    await page.waitForTimeout(150);
+    await new Promise((resolve) => setTimeout(resolve, 150));
 
     const jpeg = await frame.screenshot({
       type: "jpeg",
