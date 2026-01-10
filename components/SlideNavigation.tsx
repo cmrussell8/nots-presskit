@@ -38,33 +38,61 @@ export default function SlideNavigation({
     onPrev,
 }: SlideNavigationProps) {
     const [isDownloading, setIsDownloading] = React.useState(false);
+    const manifestUrl = process.env.NEXT_PUBLIC_PRESSKIT_MANIFEST_URL;
 
-    const handlePrint = () => {
+    const handlePrint = async () => {
         if (isDownloading) return;
         setIsDownloading(true);
 
-        fetch("/api/presskit-pdf")
-            .then((response) => {
-                if (!response.ok) {
-                    return response.text().then((message) => {
-                        throw new Error(message || "Failed to generate PDF");
+        const defaultUrl = "/api/presskit-pdf";
+        let targetUrl = defaultUrl;
+
+        const downloadFrom = async (url: string) => {
+            const response = await fetch(url);
+            if (!response.ok) {
+                const message = await response.text();
+                throw new Error(message || "Failed to generate PDF");
+            }
+            const blob = await response.blob();
+            const objectUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = objectUrl;
+            link.download = "nots-presskit.pdf";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(objectUrl);
+        };
+
+        try {
+            if (manifestUrl) {
+                try {
+                    const manifestResponse = await fetch(manifestUrl, {
+                        cache: "no-store",
                     });
+                    if (manifestResponse.ok) {
+                        const manifest = await manifestResponse.json();
+                        if (manifest?.url) {
+                            targetUrl = manifest.url;
+                        }
+                    }
+                } catch (error) {
+                    console.warn("Failed to load PDF manifest", error);
                 }
-                return response.blob();
-            })
-            .then((blob) => {
-                const url = window.URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "nots-presskit.pdf";
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-                window.URL.revokeObjectURL(url);
-            })
-            .finally(() => {
-                setIsDownloading(false);
-            });
+            }
+
+            try {
+                await downloadFrom(targetUrl);
+            } catch (error) {
+                if (targetUrl !== defaultUrl) {
+                    await downloadFrom(defaultUrl);
+                } else {
+                    throw error;
+                }
+            }
+        } finally {
+            setIsDownloading(false);
+        }
     };
 
     return (
