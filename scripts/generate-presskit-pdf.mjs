@@ -8,6 +8,9 @@ import { existsSync } from "node:fs";
 
 const exportUrl = process.env.PRESSKIT_EXPORT_URL;
 const sha = process.env.PRESSKIT_SHA;
+const scaleFactor = Number(process.env.PRESSKIT_PDF_SCALE ?? 2);
+const imageType =
+  process.env.PRESSKIT_PDF_IMAGE_TYPE === "png" ? "png" : "jpeg";
 
 if (!exportUrl) {
   throw new Error("PRESSKIT_EXPORT_URL is required.");
@@ -58,7 +61,11 @@ console.log(`Generating presskit PDF from ${exportUrl}`);
 
 const browser = await puppeteer.launch({
   args: chromium.args,
-  defaultViewport: { width: 1920, height: 1080 },
+  defaultViewport: {
+    width: 1920,
+    height: 1080,
+    deviceScaleFactor: Number.isFinite(scaleFactor) ? scaleFactor : 2,
+  },
   executablePath,
   headless: true,
 });
@@ -130,6 +137,9 @@ try {
   }
 
   const pdfDoc = await PDFDocument.create();
+  const frameBox = await frame.boundingBox();
+  const pageWidth = frameBox?.width ?? 1920;
+  const pageHeight = frameBox?.height ?? 1080;
 
   for (let index = 0; index < slideCount; index += 1) {
     await page.evaluate((slideIndex) => {
@@ -144,15 +154,22 @@ try {
 
     await new Promise((resolve) => setTimeout(resolve, 150));
 
-    const jpeg = await frame.screenshot({
-      type: "jpeg",
-      quality: 82,
+    const screenshot = await frame.screenshot({
+      type: imageType,
+      quality: imageType === "jpeg" ? 92 : undefined,
     });
 
-    const image = await pdfDoc.embedJpg(jpeg);
-    const { width, height } = image.scale(1);
-    const pageRef = pdfDoc.addPage([width, height]);
-    pageRef.drawImage(image, { x: 0, y: 0, width, height });
+    const image =
+      imageType === "jpeg"
+        ? await pdfDoc.embedJpg(screenshot)
+        : await pdfDoc.embedPng(screenshot);
+    const pageRef = pdfDoc.addPage([pageWidth, pageHeight]);
+    pageRef.drawImage(image, {
+      x: 0,
+      y: 0,
+      width: pageWidth,
+      height: pageHeight,
+    });
   }
 
   const pdfBytes = await pdfDoc.save();
