@@ -8,9 +8,13 @@ import { existsSync } from "node:fs";
 
 const exportUrl = process.env.PRESSKIT_EXPORT_URL;
 const sha = process.env.PRESSKIT_SHA;
-const scaleFactor = Number(process.env.PRESSKIT_PDF_SCALE ?? 2);
+const scaleFactor = Number(process.env.PRESSKIT_PDF_SCALE ?? 3);
 const imageType =
   process.env.PRESSKIT_PDF_IMAGE_TYPE === "png" ? "png" : "jpeg";
+const jpegQualityRaw = Number(process.env.PRESSKIT_PDF_JPEG_QUALITY ?? 96);
+const jpegQuality = Number.isFinite(jpegQualityRaw)
+  ? Math.min(100, Math.max(1, Math.round(jpegQualityRaw)))
+  : 96;
 
 if (!exportUrl) {
   throw new Error("PRESSKIT_EXPORT_URL is required.");
@@ -156,7 +160,7 @@ try {
 
     const screenshot = await frame.screenshot({
       type: imageType,
-      quality: imageType === "jpeg" ? 92 : undefined,
+      quality: imageType === "jpeg" ? jpegQuality : undefined,
     });
 
     const image =
