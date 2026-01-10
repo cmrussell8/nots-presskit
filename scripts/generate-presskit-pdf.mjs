@@ -67,13 +67,27 @@ try {
   const page = await browser.newPage();
   page.setDefaultTimeout(30000);
 
-  await page.goto(exportUrl, { waitUntil: "networkidle0" });
+  page.on("console", (message) => {
+    console.log(`[page:${message.type()}] ${message.text()}`);
+  });
+  page.on("pageerror", (error) => {
+    console.log(`[page:error] ${error.message}`);
+  });
+  page.on("requestfailed", (request) => {
+    console.log(`[page:requestfailed] ${request.url()} ${request.failure()?.errorText}`);
+  });
+
+  const targetUrl = new URL(exportUrl);
+  targetUrl.searchParams.set("pdf", "1");
+
+  await page.goto(targetUrl.toString(), { waitUntil: "networkidle0" });
   await page.emulateMediaType("screen");
   await page.evaluate(() => {
     document.body.classList.add("pdf-export");
   });
 
-  await page.waitForFunction(() => window.__presskitReveal, {
+  await page.waitForSelector(".presskit-frame", { timeout: 60000 });
+  await page.waitForFunction(() => window.__presskitRevealReady === true, {
     timeout: 60000,
   });
 
