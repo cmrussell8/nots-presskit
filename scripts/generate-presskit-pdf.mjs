@@ -4,6 +4,8 @@ import { PDFDocument } from "pdf-lib";
 import { put } from "@vercel/blob";
 import { existsSync } from "node:fs";
 
+/* global window */
+
 const exportUrl = process.env.PRESSKIT_EXPORT_URL;
 const sha = process.env.PRESSKIT_SHA;
 
@@ -71,10 +73,9 @@ try {
     document.body.classList.add("pdf-export");
   });
 
-  await page.waitForFunction(
-    () => window.Reveal && window.Reveal.isReady(),
-    { timeout: 20000 }
-  );
+  await page.waitForFunction(() => window.__presskitReveal, {
+    timeout: 60000,
+  });
 
   await page.evaluate(async () => {
     await document.fonts.ready;
@@ -92,7 +93,7 @@ try {
   });
 
   await page.evaluate(() => {
-    window.Reveal.configure({
+    window.__presskitReveal.configure({
       transition: "none",
       backgroundTransition: "none",
     });
@@ -115,11 +116,11 @@ try {
 
   for (let index = 0; index < slideCount; index += 1) {
     await page.evaluate((slideIndex) => {
-      window.Reveal.slide(slideIndex);
+      window.__presskitReveal.slide(slideIndex);
     }, index);
 
     await page.waitForFunction(
-      (slideIndex) => window.Reveal.getIndices().h === slideIndex,
+      (slideIndex) => window.__presskitReveal.getIndices().h === slideIndex,
       {},
       index
     );
