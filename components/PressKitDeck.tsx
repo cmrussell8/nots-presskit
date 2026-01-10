@@ -50,12 +50,16 @@ export default function PressKitDeck() {
             embedded: !isPrint, // Full-page for print view
         });
 
+        const windowWithReveal = window as Window & {
+            __presskitReveal?: Reveal.Api;
+            __presskitRevealReady?: boolean;
+        };
+        windowWithReveal.__presskitReveal = deck;
+        windowWithReveal.__presskitRevealReady = false;
+
         deck.initialize().then(() => {
             deckRef.current = deck;
-            const windowWithReveal = window as Window & {
-                __presskitReveal?: Reveal.Api;
-            };
-            windowWithReveal.__presskitReveal = deck;
+            windowWithReveal.__presskitRevealReady = true;
 
             // Sync React state with Reveal state
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -84,11 +88,9 @@ export default function PressKitDeck() {
             } catch (e) {
                 console.warn("Reveal cleanup error", e);
             }
-            const windowWithReveal = window as Window & {
-                __presskitReveal?: Reveal.Api;
-            };
             if (windowWithReveal.__presskitReveal === deckRef.current) {
                 windowWithReveal.__presskitReveal = undefined;
+                windowWithReveal.__presskitRevealReady = undefined;
             }
             if (isPrint) {
                 document.documentElement.classList.remove(
