@@ -106,6 +106,7 @@ export default function PressKitDeck() {
             hash: true,
             transition: "fade",
             backgroundTransition: "fade",
+            touch: false, // Rely on custom swipe handling to avoid double advances.
             disableLayout: !isPrint, // Let Reveal handle sizing for print
             display: "block",
             embedded: !isPrint, // Full-page for print view
