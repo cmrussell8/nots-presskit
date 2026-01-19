@@ -85,11 +85,11 @@ export default function Slide2Story() {
                         >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768846823/H_P_ptpgkr.jpg"
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768862674/lighter_plant_yyxcch.jpg"
                                 alt="Studio image"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md caption-plate auto-fade-up auto-delay-2">
+                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-2">
                                 Hort &amp; Pott Studio
                             </div>
                         </div>
@@ -103,7 +103,7 @@ export default function Slide2Story() {
                                 alt="Studio image detail"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md caption-plate auto-fade-up auto-delay-3">
+                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-3">
                                 NOTS Before Remodel
                             </div>
                         </div>
@@ -117,7 +117,7 @@ export default function Slide2Story() {
                                 alt="Construction image"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md caption-plate auto-fade-up auto-delay-4">
+                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-4">
                                 NOTS During Renovation
                             </div>
                         </div>
@@ -131,7 +131,7 @@ export default function Slide2Story() {
                                 alt="Remodeled space image"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md caption-plate auto-fade-up auto-delay-5">
+                            <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-5">
                                 NOTS After Remodel
                             </div>
                         </div>

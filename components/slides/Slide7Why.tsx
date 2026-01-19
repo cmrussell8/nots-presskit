@@ -61,7 +61,7 @@ export default function Slide7Why() {
                             alt="Facing cabinetry shrine"
                             className="w-full h-auto object-contain"
                         />
-                        <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md caption-plate auto-fade-up auto-delay-5">
+                        <div className="absolute bottom-3 left-3 font-modern text-[11px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-5">
                             Facing Cabinetry Shrine
                         </div>
                     </div>

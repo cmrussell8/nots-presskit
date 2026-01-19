@@ -30,11 +30,6 @@
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   }
 
-  .caption-plate {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
-    padding: 4px 8px;
-    border-radius: 2px;
-  }
 }
 
 /* Reveal.js embedded overrides */
