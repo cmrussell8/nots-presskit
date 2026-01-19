@@ -2,8 +2,19 @@ import React from "react";
 
 export default function Slide6Founders() {
     return (
-        <section className="w-full h-full bg-slide-bg">
-            <div className="w-full h-full flex flex-row p-[4%]">
+        <section className="w-full h-full bg-slide-bg relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 z-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768844956/FF_islfnk.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute left-[12%] bottom-[8%] h-[50%] w-auto opacity-[0.06]"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                />
+            </div>
+
+            <div className="relative z-10 w-full h-full flex flex-row p-[4%]">
                 {/* Left Column: Text */}
                 <div className="w-[42%] h-full flex flex-col py-[1%] pr-[2%] text-left">
                     <div>

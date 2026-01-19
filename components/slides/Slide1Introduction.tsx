@@ -3,8 +3,19 @@ import SlideFrame from "../SlideFrame";
 
 export default function Slide1Introduction() {
     return (
-        <section className="w-full h-full bg-slide-bg">
-            <div className="w-full h-full flex flex-row p-[4%]">
+        <section className="w-full h-full bg-slide-bg relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-0 z-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768839389/Bull_NO_LOGO_mzqovp.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute right-[-16%] bottom-[10%] h-[64%] w-auto opacity-[0.05]"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                />
+            </div>
+
+            <div className="relative z-10 w-full h-full flex flex-row p-[4%]">
                 {/* Left Column: Image */}
                 <div className="w-[55%] h-full flex flex-col justify-center">
                     <div className="relative shadow-[0_4px_30px_rgba(0,0,0,0.25)]">
@@ -27,16 +38,22 @@ export default function Slide1Introduction() {
                 <div className="flex-1 h-full flex flex-col justify-between py-[1%] text-left">
                     {/* Top Section */}
                     <div>
-                        <div className="flex items-center gap-3 mb-8">
+                        <div className="flex items-center gap-3 mb-16">
                             <div className="h-px w-5 bg-accent-clay/60"></div>
                             <span className="font-modern text-[8px] tracking-[0.35em] uppercase text-accent-clay/70">
                                 Press Release
                             </span>
                         </div>
 
-                        <h1 className="font-old-world text-[4vw] leading-[0.95] text-text-primary tracking-[-0.01em] mb-12 text-left auto-fade-up auto-delay-1">
-                            Night on the Sun
-                        </h1>
+                        <div className="mb-12 text-left auto-fade-up auto-delay-1">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768838829/Word.Mark_BLACK_piaq0q.png"
+                                alt="Night on the Sun wordmark"
+                                className="block w-[46vw] max-w-[640px] min-w-[300px] h-auto"
+                                style={{ filter: "brightness(0) invert(1)" }}
+                            />
+                        </div>
 
                         {/* Tagline - burgundy accent */}
                         <p className="font-modern text-[11px] tracking-[0.3em] uppercase text-burgundy-light mb-6 text-left auto-fade-up auto-delay-2">
@@ -52,11 +69,11 @@ export default function Slide1Introduction() {
                     {/* Middle Section */}
                     <div className="space-y-5 -mt-4">
                         <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left auto-fade-up auto-delay-4">
-                            Night on the Sun is a new retail and gallery destination.
-                            Uniting the vitality of a garden store, the intention of a
-                            gallery, and the wonder of a museum, it offers a carefully
-                            curated collection of objects for interiors, gardens, and the
-                            spaces in between.
+                            Night on the Sun is a new retail and experiential gallery
+                            destination. Uniting the vitality of a garden store, the
+                            intention of a gallery, and the wonder of a museum, it offers a
+                            carefully curated collection of objects and botanica for
+                            interiors, gardens, and the spaces in between.
                         </p>
 
                         <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left auto-fade-up auto-delay-5">
