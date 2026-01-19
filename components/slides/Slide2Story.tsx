@@ -62,57 +62,37 @@ export default function Slide2Story() {
                 {/* Right Column: Image Placeholders */}
                 <div className="flex-1 h-full flex flex-col justify-center">
                     <div className="grid grid-cols-2 gap-4">
-                        <div
-                            className="flex items-center justify-center border border-divider text-text-body-secondary"
-                            style={{ aspectRatio: "4 / 3" }}
-                        >
-                            <div className="flex flex-col items-center gap-2 text-center">
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-2">
-                                    WIP
-                                </span>
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-3">
-                                    Hort &amp; Pott Photo
-                                </span>
-                            </div>
+                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768846823/H_P_ptpgkr.jpg"
+                                alt="Studio image"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
-                        <div
-                            className="flex items-center justify-center border border-divider text-text-body-secondary"
-                            style={{ aspectRatio: "4 / 3" }}
-                        >
-                            <div className="flex flex-col items-center gap-2 text-center">
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-4">
-                                    WIP
-                                </span>
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase text-center auto-fade-up auto-delay-5">
-                                    NOTS Before Remodel Photo
-                                </span>
-                            </div>
+                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.00_AM_kvgw7c.png"
+                                alt="Studio image detail"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
-                        <div
-                            className="flex items-center justify-center border border-divider text-text-body-secondary"
-                            style={{ aspectRatio: "4 / 3" }}
-                        >
-                            <div className="flex flex-col items-center gap-2 text-center">
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-6">
-                                    WIP
-                                </span>
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-7">
-                                    Construction Photo
-                                </span>
-                            </div>
+                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.07_AM_loptfr.png"
+                                alt="Construction image"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
-                        <div
-                            className="flex items-center justify-center border border-divider text-text-body-secondary"
-                            style={{ aspectRatio: "4 / 3" }}
-                        >
-                            <div className="flex flex-col items-center gap-2 text-center">
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase font-semibold text-text-body-secondary auto-fade-up auto-delay-8">
-                                    WIP
-                                </span>
-                                <span className="font-modern text-[9px] tracking-[0.3em] uppercase auto-fade-up auto-delay-9">
-                                    NOTS Remodeled Photo
-                                </span>
-                            </div>
+                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.15_AM_knk1ml.png"
+                                alt="Remodeled space image"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                     </div>
                 </div>

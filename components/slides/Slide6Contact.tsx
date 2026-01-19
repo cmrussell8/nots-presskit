@@ -5,7 +5,18 @@ export default function Slide6Contact() {
         <section className="w-full h-full bg-slide-bg">
             <div className="w-full h-full flex flex-row p-[4%]">
                 {/* Left Column: Heading */}
-                <div className="w-[42%] h-full flex flex-col py-[1%] pr-[2%] text-left">
+                <div className="w-[42%] h-full relative overflow-hidden flex flex-col py-[1%] pr-[2%] text-left">
+                    <div className="pointer-events-none absolute inset-0 z-0">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768846313/Seal_xehpbj.png"
+                            alt=""
+                            aria-hidden="true"
+                            className="absolute left-1/2 -translate-x-1/2 top-[52%] h-[32%] w-auto opacity-[0.85]"
+                        />
+                    </div>
+
+                    <div className="relative z-10">
                     <div>
                         <div className="flex items-center gap-3 mb-8">
                             <div className="h-px w-5 bg-accent-clay/60"></div>
@@ -27,6 +38,7 @@ export default function Slide6Contact() {
                             Night on the Sun is opening in late spring 2026. For press inquiries and additional materials,
                             reach out using the contact details provided.
                         </p>
+                    </div>
                     </div>
                 </div>
 
