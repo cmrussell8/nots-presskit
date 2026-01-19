@@ -20,28 +20,28 @@ export default function Slide6Founders() {
                     <div>
                         <div className="flex items-center gap-3 mb-8">
                             <div className="h-px w-5 bg-accent-clay/60"></div>
-                            <span className="font-modern text-[8px] tracking-[0.35em] uppercase text-accent-clay/70">
+                            <span className="font-modern text-[10px] tracking-[0.35em] uppercase text-accent-clay/70">
                                 Press Release
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
+                        <h2 className="font-old-world text-[70px] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             Founders
                         </h2>
                     </div>
 
                     <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
+                        <p className="font-old-world text-[27px] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
                             Night on the Sun was founded by Carter Harrington (CEO) and Todd Carr (Creative Director),
                             the duo behind Hort &amp; Pott.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
+                        <p className="font-old-world text-[23px] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
                             Together, they have built a practice rooted in craft, material curiosity, and a deep respect
                             for process.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
+                        <p className="font-old-world text-[23px] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
                             Where Hort &amp; Pott remains a deeply personal studio expression, Night on the Sun allows the
                             founders' vision to expand beyond a single voice, becoming a collaborative platform for
                             discovery, dialogue, and growth.
@@ -66,19 +66,19 @@ export default function Slide6Founders() {
 
                         <div className="space-y-3">
                             <div className="flex flex-col">
-                                <span className="font-old-world text-[1.2vw] text-text-body auto-fade-up auto-delay-5">
+                                <span className="font-old-world text-[25px] text-text-body auto-fade-up auto-delay-5">
                                     Carter Harrington
                                 </span>
-                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-5">
+                                <span className="font-modern text-[11px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-5">
                                     CEO
                                 </span>
                             </div>
 
                             <div className="flex flex-col">
-                                <span className="font-old-world text-[1.2vw] text-text-body auto-fade-up auto-delay-6">
+                                <span className="font-old-world text-[25px] text-text-body auto-fade-up auto-delay-6">
                                     Todd Carr
                                 </span>
-                                <span className="font-modern text-[9px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-6">
+                                <span className="font-modern text-[11px] tracking-[0.25em] uppercase text-accent-clay/70 auto-fade-up auto-delay-6">
                                     Creative Director
                                 </span>
                             </div>
