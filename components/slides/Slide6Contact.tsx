@@ -12,7 +12,7 @@ export default function Slide6Contact() {
                             src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768846313/Seal_xehpbj.png"
                             alt=""
                             aria-hidden="true"
-                            className="absolute left-1/2 -translate-x-1/2 top-[52%] h-[32%] w-auto opacity-[0.85]"
+                            className="absolute left-1/2 -translate-x-1/2 top-[52%] h-[32%] w-auto opacity-[0.6]"
                         />
                     </div>
 

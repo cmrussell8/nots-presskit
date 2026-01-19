@@ -6,10 +6,10 @@ export default function Slide6Founders() {
             <div className="pointer-events-none absolute inset-0 z-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768844956/FF_islfnk.png"
+                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768857549/SUNMAN_zdnpii.png"
                     alt=""
                     aria-hidden="true"
-                    className="absolute left-[12%] bottom-[8%] h-[50%] w-auto opacity-[0.06]"
+                    className="absolute left-[-2%] bottom-[6%] h-[56%] w-auto opacity-[0.06]"
                     style={{ filter: "brightness(0) invert(1)" }}
                 />
             </div>

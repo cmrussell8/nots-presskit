@@ -25,7 +25,7 @@ export default function Slide1Introduction() {
                             alt="Night on the Sun Interior"
                             className="w-full h-auto object-contain"
                         />
-                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-2">
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-2">
                             MAIN ROOM, INTO FRONT
                         </div>
                     </div>
@@ -69,7 +69,7 @@ export default function Slide1Introduction() {
                     {/* Middle Section */}
                     <div className="space-y-5 -mt-4">
                         <p className="font-old-world text-[1.3vw] leading-[1.5] text-text-body text-left auto-fade-up auto-delay-4">
-                            Night on the Sun is a new retail and experiential gallery
+                            Night on the Sun is a new retail and experiential
                             destination. Uniting the vitality of a garden store, the
                             intention of a gallery, and the wonder of a museum, it offers a
                             carefully curated collection of objects and botanica for

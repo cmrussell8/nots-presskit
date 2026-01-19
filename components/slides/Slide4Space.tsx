@@ -17,7 +17,7 @@ export default function Slide4Space() {
                                 alt="Checkout counter"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-2">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-2">
                                 Checkout Counter
                             </div>
                         </div>
@@ -32,7 +32,7 @@ export default function Slide4Space() {
                                 alt="Front room gallery"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-3">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-3">
                                 Front Room Gallery
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export default function Slide4Space() {
                                 alt="Front looking into main room"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-4">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-4">
                                 Front, Looking into Main
                             </div>
                         </div>
@@ -62,7 +62,7 @@ export default function Slide4Space() {
                                 alt="Facing cabinetry shrine"
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm auto-fade-up auto-delay-5">
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-5">
                                 Facing Cabinetry Shrine
                             </div>
                         </div>

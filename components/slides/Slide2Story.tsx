@@ -29,7 +29,7 @@ export default function Slide2Story() {
                         </p>
 
                         <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
-                            After years of working through Hort & Pott—building a studio
+                            After years of growing Hort & Pott—building a studio
                             practice grounded in seasonality, material exploration, and
                             handmade process—founders Todd Carr and Carter Harrington found
                             themselves drawn toward something larger: a place that could
@@ -47,12 +47,29 @@ export default function Slide2Story() {
                     </div>
 
                     {/* Bottom - Pull quote */}
-                    <div className="pt-6 border-t border-divider mt-auto mb-6">
-                        <p className="font-modern text-[11px] leading-[1.9] tracking-[0.06em] uppercase text-burgundy text-left auto-fade-up auto-delay-5">
-                            More than a storefront, Night on the Sun is an invitation to
-                            slow down, look closer, and engage with objects that carry
-                            presence, history, and intention.
-                        </p>
+                    <div className="mt-auto mb-6">
+                        <div className="flex items-end justify-between mb-3">
+                            <span className="font-modern text-[12px] tracking-[0.25em] uppercase text-text-body-secondary">
+                                Hort &amp; Pott
+                            </span>
+                            <div className="pointer-events-none">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768838829/Word.Mark_BLACK_piaq0q.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                    className="w-[210px] h-auto opacity-80"
+                                    style={{ filter: "brightness(0) invert(1)" }}
+                                />
+                            </div>
+                        </div>
+                        <div className="pt-6 border-t border-divider">
+                            <p className="font-modern text-[11px] leading-[1.9] tracking-[0.06em] uppercase text-burgundy text-left auto-fade-up auto-delay-5">
+                                More than a storefront, Night on the Sun is an invitation to
+                                slow down, look closer, and engage with objects that carry
+                                presence, history, and intention.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -62,37 +79,61 @@ export default function Slide2Story() {
                 {/* Right Column: Image Placeholders */}
                 <div className="flex-1 h-full flex flex-col justify-center">
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                        <div
+                            className="relative overflow-hidden border border-divider"
+                            style={{ aspectRatio: "4 / 3" }}
+                        >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768846823/H_P_ptpgkr.jpg"
                                 alt="Studio image"
                                 className="w-full h-full object-cover"
                             />
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-2">
+                                Hort &amp; Pott Studio
+                            </div>
                         </div>
-                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                        <div
+                            className="relative overflow-hidden border border-divider"
+                            style={{ aspectRatio: "4 / 3" }}
+                        >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.00_AM_kvgw7c.png"
                                 alt="Studio image detail"
                                 className="w-full h-full object-cover"
                             />
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-3">
+                                NOTS Before Remodel
+                            </div>
                         </div>
-                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                        <div
+                            className="relative overflow-hidden border border-divider"
+                            style={{ aspectRatio: "4 / 3" }}
+                        >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.07_AM_loptfr.png"
                                 alt="Construction image"
                                 className="w-full h-full object-cover"
                             />
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-4">
+                                NOTS During Renovation
+                            </div>
                         </div>
-                        <div className="overflow-hidden border border-divider" style={{ aspectRatio: "4 / 3" }}>
+                        <div
+                            className="relative overflow-hidden border border-divider"
+                            style={{ aspectRatio: "4 / 3" }}
+                        >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.15_AM_knk1ml.png"
                                 alt="Remodeled space image"
                                 className="w-full h-full object-cover"
                             />
+                            <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-5">
+                                NOTS After Remodel
+                            </div>
                         </div>
                     </div>
                 </div>

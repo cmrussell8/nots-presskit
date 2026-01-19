@@ -6,10 +6,10 @@ export default function Slide7Why() {
             <div className="pointer-events-none absolute inset-0 z-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768844187/Horse_SUN_d7ar6n.png"
+                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768857005/BEASTS2_hmatbu.png"
                     alt=""
                     aria-hidden="true"
-                    className="absolute left-[8%] bottom-[6%] h-[30%] w-auto opacity-[0.08]"
+                    className="absolute left-[8%] bottom-[6%] h-[34%] w-auto opacity-[0.12]"
                     style={{ filter: "brightness(0) invert(1)" }}
                 />
             </div>
@@ -25,23 +25,23 @@ export default function Slide7Why() {
                             </span>
                         </div>
 
-                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left">
+                        <h2 className="font-old-world text-[3.5vw] leading-[1] text-text-primary tracking-[-0.01em] mb-8 text-left auto-fade-up auto-delay-1">
                             Why Night on the Sun
                         </h2>
                     </div>
 
                     <div className="space-y-6 flex-1">
-                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic">
+                        <p className="font-old-world text-[1.3vw] leading-[1.55] text-text-body text-left italic auto-fade-up auto-delay-2">
                             In a landscape saturated with mass-produced goods and fleeting trends, Night on the Sun offers
                             an alternative.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-3">
                             It is a response to a growing desire for objects with soul—pieces that feel storied, intentional,
                             and quietly powerful.
                         </p>
 
-                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left">
+                        <p className="font-old-world text-[1.1vw] leading-[1.6] text-text-body text-left auto-fade-up auto-delay-4">
                             Night on the Sun exists to help people tell their own stories through the objects they choose to
                             live with. It is a place for the cultivated and the curious, for those drawn to beauty, intrigue,
                             and the thrill of the rare find.
@@ -61,7 +61,7 @@ export default function Slide7Why() {
                             alt="Facing cabinetry shrine"
                             className="w-full h-auto object-contain"
                         />
-                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/40 uppercase text-shadow-sm">
+                        <div className="absolute bottom-3 left-3 font-modern text-[9px] tracking-[0.2em] text-white/60 uppercase text-shadow-md auto-fade-up auto-delay-5">
                             Facing Cabinetry Shrine
                         </div>
                     </div>
