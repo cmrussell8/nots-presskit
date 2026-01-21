@@ -48,11 +48,17 @@ export default function Slide2Story() {
 
                     {/* Bottom - Pull quote */}
                     <div className="mt-auto mb-6">
-                        <div className="flex items-end justify-between mb-3">
-                            <span className="font-modern text-[14px] tracking-[0.25em] uppercase text-text-body-secondary">
-                                Hort &amp; Pott
-                            </span>
-                            <div className="pointer-events-none">
+                        <div className="flex items-end justify-between mb-0">
+                            <div className="pointer-events-none -ml-4 translate-y-[4px]">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1769016549/HORIZONTAL-14_peqd78.png"
+                                    alt="Hort & Pott logo"
+                                    className="w-[230px] h-auto opacity-80"
+                                    style={{ filter: "brightness(0) invert(1)" }}
+                                />
+                            </div>
+                            <div className="pointer-events-none -translate-y-[20px] -translate-x-[32px]">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                     src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768838829/Word.Mark_BLACK_piaq0q.png"
@@ -85,7 +91,7 @@ export default function Slide2Story() {
                         >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768862674/lighter_plant_yyxcch.jpg"
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1769018022/IMG_9953_rjntyg.jpg"
                                 alt="Studio image"
                                 className="w-full h-full object-cover"
                             />
@@ -99,7 +105,7 @@ export default function Slide2Story() {
                         >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.00_AM_kvgw7c.png"
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1769019015/NOTS_before_2_xbfl12.jpg"
                                 alt="Studio image detail"
                                 className="w-full h-full object-cover"
                             />
@@ -113,7 +119,7 @@ export default function Slide2Story() {
                         >
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1768841554/Screenshot_2026-01-19_at_11.52.07_AM_loptfr.png"
+                                src="https://res.cloudinary.com/dl3nvfmil/image/upload/v1769019169/NOTS_construction_ycpgxb.jpg"
                                 alt="Construction image"
                                 className="w-full h-full object-cover"
                             />
