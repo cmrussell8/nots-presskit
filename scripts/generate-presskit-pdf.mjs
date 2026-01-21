@@ -7,7 +7,11 @@ import { existsSync } from "node:fs";
 /* global window */
 
 const exportUrl = process.env.PRESSKIT_EXPORT_URL;
-const sha = process.env.PRESSKIT_SHA;
+const sha =
+  process.env.PRESSKIT_SHA ??
+  process.env.VERCEL_GIT_COMMIT_SHA ??
+  process.env.GIT_COMMIT_SHA ??
+  process.env.COMMIT_SHA;
 const scaleFactor = Number(process.env.PRESSKIT_PDF_SCALE ?? 3);
 const imageType =
   process.env.PRESSKIT_PDF_IMAGE_TYPE === "png" ? "png" : "jpeg";
@@ -21,7 +25,9 @@ if (!exportUrl) {
 }
 
 if (!sha) {
-  throw new Error("PRESSKIT_SHA is required.");
+  throw new Error(
+    "PRESSKIT_SHA is required (or set VERCEL_GIT_COMMIT_SHA/GIT_COMMIT_SHA)."
+  );
 }
 
 if (!process.env.BLOB_READ_WRITE_TOKEN) {
