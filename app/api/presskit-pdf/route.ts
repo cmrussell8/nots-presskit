@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 import { existsSync } from "node:fs";
+import { PDFDocument } from "pdf-lib";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,7 +20,6 @@ export async function GET(request: Request) {
   }
 
   const target = new URL(`${protocol}://${host}/`);
-  target.searchParams.set("print-pdf", "1");
   target.searchParams.set("pdf", "1");
 
   const isServerless =
@@ -56,6 +56,12 @@ export async function GET(request: Request) {
   const scaleFactor = Number.isFinite(scaleRaw)
     ? Math.min(4, Math.max(1, scaleRaw))
     : 2;
+  const imageType =
+    process.env.PRESSKIT_PDF_IMAGE_TYPE === "png" ? "png" : "jpeg";
+  const jpegQualityRaw = Number(process.env.PRESSKIT_PDF_JPEG_QUALITY ?? 96);
+  const jpegQuality = Number.isFinite(jpegQualityRaw)
+    ? Math.min(100, Math.max(1, Math.round(jpegQualityRaw)))
+    : 96;
 
   const browser = await puppeteer.launch({
     args: chromium.args,
@@ -65,22 +71,23 @@ export async function GET(request: Request) {
       deviceScaleFactor: scaleFactor,
     },
     executablePath,
+    headless: true,
   });
 
   try {
     const page = await browser.newPage();
+    page.setDefaultTimeout(60000);
     await page.goto(target.toString(), { waitUntil: "networkidle0" });
-    await page.emulateMediaType("print");
+    await page.emulateMediaType("screen");
 
-    await page.waitForFunction(
-      () => document.documentElement.classList.contains("reveal-print"),
-      { timeout: 10000 }
-    );
+    await page.evaluate(() => {
+      document.body.classList.add("pdf-export");
+    });
 
-    await page.waitForFunction(
-      () => document.querySelectorAll(".pdf-page").length > 0,
-      { timeout: 10000 }
-    );
+    await page.waitForSelector(".presskit-frame", { timeout: 60000 });
+    await page.waitForFunction(() => window.__presskitRevealReady === true, {
+      timeout: 60000,
+    });
 
     await page.evaluate(async () => {
       await document.fonts.ready;
@@ -97,10 +104,65 @@ export async function GET(request: Request) {
       );
     });
 
-    const pdf = await page.pdf({
-      printBackground: true,
-      preferCSSPageSize: true,
+    await page.evaluate(() => {
+      window.__presskitReveal.configure({
+        transition: "none",
+        backgroundTransition: "none",
+      });
     });
+
+    const slideCount = await page.evaluate(
+      () => document.querySelectorAll(".reveal .slides > section").length
+    );
+
+    if (!slideCount) {
+      return new NextResponse("No slides found for PDF export.", {
+        status: 500,
+      });
+    }
+
+    const frame = await page.$(".presskit-frame");
+    if (!frame) {
+      return new NextResponse("Presskit frame not found.", { status: 500 });
+    }
+
+    const pdfDoc = await PDFDocument.create();
+    const frameBox = await frame.boundingBox();
+    const pageWidth = frameBox?.width ?? 1920;
+    const pageHeight = frameBox?.height ?? 1080;
+
+    for (let index = 0; index < slideCount; index += 1) {
+      await page.evaluate((slideIndex) => {
+        window.__presskitReveal.slide(slideIndex);
+      }, index);
+
+      await page.waitForFunction(
+        (slideIndex) => window.__presskitReveal.getIndices().h === slideIndex,
+        {},
+        index
+      );
+
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
+      const screenshot = await frame.screenshot({
+        type: imageType,
+        quality: imageType === "jpeg" ? jpegQuality : undefined,
+      });
+
+      const image =
+        imageType === "jpeg"
+          ? await pdfDoc.embedJpg(screenshot)
+          : await pdfDoc.embedPng(screenshot);
+      const pageRef = pdfDoc.addPage([pageWidth, pageHeight]);
+      pageRef.drawImage(image, {
+        x: 0,
+        y: 0,
+        width: pageWidth,
+        height: pageHeight,
+      });
+    }
+
+    const pdf = await pdfDoc.save();
 
     return new NextResponse(Buffer.from(pdf), {
       status: 200,
