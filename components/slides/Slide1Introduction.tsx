@@ -97,10 +97,10 @@ export default function Slide1Introduction() {
                                 Inquiries
                             </span>
                             <a
-                                href="mailto:press@nightonthesun.com"
+                                href="mailto:info@nightonthesun.com"
                                 className="block font-modern text-[11px] tracking-[0.2em] text-[#6b665e] hover:text-text-body transition-colors uppercase mt-1 auto-fade-up auto-delay-8"
                             >
-                                press@nightonthesun.com
+                                info@nightonthesun.com
                             </a>
                         </div>
                     </div>
