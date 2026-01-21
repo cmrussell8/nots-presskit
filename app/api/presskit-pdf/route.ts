@@ -4,6 +4,18 @@ import puppeteer from "puppeteer-core";
 import { existsSync } from "node:fs";
 import { PDFDocument } from "pdf-lib";
 
+type PresskitWindow = Window & {
+  __presskitRevealReady?: boolean;
+  __presskitReveal?: {
+    configure: (options: {
+      transition?: string;
+      backgroundTransition?: string;
+    }) => void;
+    slide: (index: number) => void;
+    getIndices: () => { h: number };
+  };
+};
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -85,9 +97,12 @@ export async function GET(request: Request) {
     });
 
     await page.waitForSelector(".presskit-frame", { timeout: 60000 });
-    await page.waitForFunction(() => window.__presskitRevealReady === true, {
-      timeout: 60000,
-    });
+    await page.waitForFunction(
+      () => (window as PresskitWindow).__presskitRevealReady === true,
+      {
+        timeout: 60000,
+      }
+    );
 
     await page.evaluate(async () => {
       await document.fonts.ready;
@@ -105,7 +120,7 @@ export async function GET(request: Request) {
     });
 
     await page.evaluate(() => {
-      window.__presskitReveal.configure({
+      (window as PresskitWindow).__presskitReveal?.configure({
         transition: "none",
         backgroundTransition: "none",
       });
@@ -133,11 +148,13 @@ export async function GET(request: Request) {
 
     for (let index = 0; index < slideCount; index += 1) {
       await page.evaluate((slideIndex) => {
-        window.__presskitReveal.slide(slideIndex);
+        (window as PresskitWindow).__presskitReveal?.slide(slideIndex);
       }, index);
 
       await page.waitForFunction(
-        (slideIndex) => window.__presskitReveal.getIndices().h === slideIndex,
+        (slideIndex) =>
+          (window as PresskitWindow).__presskitReveal?.getIndices().h ===
+          slideIndex,
         {},
         index
       );
