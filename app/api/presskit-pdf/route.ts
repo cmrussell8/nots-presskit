@@ -5,6 +5,7 @@ import { existsSync } from "node:fs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET(request: Request) {
   const host =
@@ -51,9 +52,18 @@ export async function GET(request: Request) {
     );
   }
 
+  const scaleRaw = Number(process.env.PRESSKIT_PDF_SCALE ?? 2);
+  const scaleFactor = Number.isFinite(scaleRaw)
+    ? Math.min(4, Math.max(1, scaleRaw))
+    : 2;
+
   const browser = await puppeteer.launch({
     args: chromium.args,
-    defaultViewport: { width: 1920, height: 1080 },
+    defaultViewport: {
+      width: 1920,
+      height: 1080,
+      deviceScaleFactor: scaleFactor,
+    },
     executablePath,
   });
 
@@ -71,6 +81,21 @@ export async function GET(request: Request) {
       () => document.querySelectorAll(".pdf-page").length > 0,
       { timeout: 10000 }
     );
+
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      const images = Array.from(document.images);
+      await Promise.all(
+        images.map(
+          (img) =>
+            img.complete ||
+            new Promise((resolve) => {
+              img.addEventListener("load", resolve, { once: true });
+              img.addEventListener("error", resolve, { once: true });
+            })
+        )
+      );
+    });
 
     const pdf = await page.pdf({
       printBackground: true,

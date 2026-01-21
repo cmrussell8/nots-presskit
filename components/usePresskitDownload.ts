@@ -8,9 +8,10 @@ const FILE_NAME = "nots-presskit.pdf";
 export const usePresskitDownload = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const manifestUrl = process.env.NEXT_PUBLIC_PRESSKIT_MANIFEST_URL;
+  const currentVersion = process.env.NEXT_PUBLIC_PRESSKIT_VERSION ?? "";
 
   const downloadFrom = useCallback(async (url: string) => {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
       const message = await response.text();
       throw new Error(message || "Failed to generate PDF");
@@ -31,6 +32,7 @@ export const usePresskitDownload = () => {
     setIsDownloading(true);
 
     let targetUrl = DEFAULT_URL;
+    let cacheBuster = Date.now().toString();
 
     if (manifestUrl) {
       try {
@@ -38,7 +40,21 @@ export const usePresskitDownload = () => {
         if (manifestResponse.ok) {
           const manifest = await manifestResponse.json();
           if (manifest?.url) {
-            targetUrl = manifest.url;
+            const manifestVersion =
+              typeof manifest.version === "string" ? manifest.version : "";
+
+            if (
+              currentVersion &&
+              manifestVersion &&
+              manifestVersion !== currentVersion
+            ) {
+              console.warn(
+                "Presskit manifest is stale; falling back to on-demand PDF."
+              );
+            } else {
+              targetUrl = manifest.url;
+              cacheBuster = manifestVersion || cacheBuster;
+            }
           }
         }
       } catch (error) {
@@ -47,17 +63,21 @@ export const usePresskitDownload = () => {
     }
 
     try {
-      await downloadFrom(targetUrl);
+      const downloadUrl = new URL(targetUrl, window.location.origin);
+      downloadUrl.searchParams.set("v", cacheBuster);
+      await downloadFrom(downloadUrl.toString());
     } catch (error) {
       if (targetUrl !== DEFAULT_URL) {
-        await downloadFrom(DEFAULT_URL);
+        const fallbackUrl = new URL(DEFAULT_URL, window.location.origin);
+        fallbackUrl.searchParams.set("v", Date.now().toString());
+        await downloadFrom(fallbackUrl.toString());
       } else {
         throw error;
       }
     } finally {
       setIsDownloading(false);
     }
-  }, [downloadFrom, isDownloading, manifestUrl]);
+  }, [currentVersion, downloadFrom, isDownloading, manifestUrl]);
 
   return { isDownloading, handleDownload };
 };
